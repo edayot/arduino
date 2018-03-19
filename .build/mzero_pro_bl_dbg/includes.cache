@@ -1,0 +1,17 @@
+[
+  {
+    "Sourcefile": "",
+    "Include": "",
+    "Includepath": "C:\\Users\\eleve\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\samd\\1.6.17\\cores\\arduino"
+  },
+  {
+    "Sourcefile": "",
+    "Include": "",
+    "Includepath": "C:\\Users\\eleve\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\samd\\1.6.17\\variants\\arduino_mzero"
+  },
+  {
+    "Sourcefile": "c:\\Users\\eleve\\Desktop\\arduino\\arduino\\.build\\mzero_pro_bl_dbg\\sketch\\main.ino.cpp",
+    "Include": "",
+    "Includepath": ""
+  }
+]

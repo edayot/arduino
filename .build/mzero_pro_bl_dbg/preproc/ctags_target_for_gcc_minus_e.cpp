@@ -1,7 +1,9 @@
+# 1 "c:\\Users\\eleve\\Desktop\\arduino\\arduino\\main.ino"
+# 1 "c:\\Users\\eleve\\Desktop\\arduino\\arduino\\main.ino"
 //  Copyright (c) 2018 Antoine Tran Tan
 //
 
-#include "Arduino.h"
+# 5 "c:\\Users\\eleve\\Desktop\\arduino\\arduino\\main.ino" 2
 
 // the setup function runs once when you press reset or power the board
 void setup()
