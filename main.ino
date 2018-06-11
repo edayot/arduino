@@ -35,22 +35,18 @@ void automate()
     static int ms = 0;
 
     // Update the state only every 1000 function calls
-    if (ms == 999)
+    if (ms == 99)
     {
         ms = 0;
 
         static long RangeInCentimeters;
 
         RangeInCentimeters = ultrasonic.MeasureInCentimeters(); // two measurements should keep an interval
-        delay(250);
 
         // Manage the state transitions from the state value
         switch (my_state)
         {
             case fsm_state::s0:
-
-                Motor.speed(MOTOR1, 50);
-                Motor.speed(MOTOR2, -70);
 
                 if(RangeInCentimeters < 5)
                 {
@@ -60,9 +56,6 @@ void automate()
                 break;
 
             case fsm_state::s1:
-
-                Motor.stop(MOTOR1);
-                Motor.stop(MOTOR2);
 
                 if (RangeInCentimeters >= 5)
                 {
@@ -82,5 +75,21 @@ void automate()
 
 void loop()
 {
+    switch (my_state)
+    {
+    case fsm_state::s0:
+
+        Motor.speed(MOTOR1, -50);
+        Motor.speed(MOTOR2, 70);
+
+        break;
+
+    case fsm_state::s1:
+
+        Motor.stop(MOTOR1);
+        Motor.stop(MOTOR2);
+
+        break;
+    }
 
 }
