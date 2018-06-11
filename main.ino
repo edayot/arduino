@@ -13,7 +13,12 @@
 enum class fsm_state
 {
     s0,
-    s1
+    s1,
+    s2,
+    s3,
+    s4,
+    s5,
+
 };
 
 // Declaration of a variable of type fsm_state
@@ -44,26 +49,31 @@ void automate()
         RangeInCentimeters = ultrasonic.MeasureInCentimeters(); // two measurements should keep an interval
 
         // Manage the state transitions from the state value
-        if (RangeInCentimeters >= 5)
+        if (RangeInCentimeters >= 30)
         {
             my_state = fsm_state::s0;
         }
-        else if (RangeInCentimeters < 5)
+        else if (RangeInCentimeters >= 25)
         {
             my_state = fsm_state::s1;
         }
-        else if RangeInCentimeters < 4)
+        else if (RangeInCentimeters >= 20)
         {
             my_state = fsm_state::s2;
         }
-        else if (RangeInCentimeters < 3)
+        else if (RangeInCentimeters >= 15)
         {
             my_state = fsm_state::s3;
         }
-        else if (RangeInCentimeters < 3)
+        else if (RangeInCentimeters >= 10)
         {
             my_state = fsm_state::s4;
         }
+        else
+        {
+            my_state = fsm_state::s5;
+        }
+
     }
     else
     {
@@ -77,43 +87,43 @@ void loop()
 {
     switch (my_state)
     {
-    case fsm_state::s0:
+        case fsm_state::s0:
 
-        Motor.speed(MOTOR1, -50);
-        Motor.speed(MOTOR2, 50);
+            Motor.speed(MOTOR1, 50);
+            Motor.speed(MOTOR2, 50);
 
-        break;
+            break;
 
-    case fsm_state::s1:
+        case fsm_state::s1:
 
-        Motor.speed(MOTOR1, -40);
-        Motor.speed(MOTOR2, 40);
+            Motor.speed(MOTOR1, 40);
+            Motor.speed(MOTOR2, 40);
 
-        break;
-    }
-    case fsm_state::s2:
+            break;
+        
+        case fsm_state::s2:
 
-        Motor.speed(MOTOR1, -30);
-        Motor.speed(MOTOR2, 30);
+            Motor.speed(MOTOR1, 30);
+            Motor.speed(MOTOR2, 30);
 
-        break;
-    case fsm_state::s3:
+            break;
+        case fsm_state::s3:
 
-        Motor.speed(MOTOR1, -20);
-        Motor.speed(MOTOR2, 20);
+            Motor.speed(MOTOR1, 20);
+            Motor.speed(MOTOR2, 20);
 
-        break;
-    case fsm_state::s4:
+            break;
+        case fsm_state::s4:
 
-        Motor.speed(MOTOR1, -10);
-        Motor.speed(MOTOR2, 10);
+            Motor.speed(MOTOR1, 10);
+            Motor.speed(MOTOR2, 10);
 
-        break;
-    case fsm_state::s5:
+            break;
+        case fsm_state::s5:
 
-        Motor.stop(MOTOR1);
-        Motor.stop(MOTOR2);
+            Motor.stop(MOTOR1);
+            Motor.stop(MOTOR2);
 
-        break;
-}   
+            break;
+    }   
 }
