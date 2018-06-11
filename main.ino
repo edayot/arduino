@@ -44,25 +44,25 @@ void automate()
         RangeInCentimeters = ultrasonic.MeasureInCentimeters(); // two measurements should keep an interval
 
         // Manage the state transitions from the state value
-        switch (my_state)
+        if (RangeInCentimeters >= 5)
         {
-            case fsm_state::s0:
-
-                if(RangeInCentimeters < 5)
-                {
-                    my_state = fsm_state::s1;
-                }
-
-                break;
-
-            case fsm_state::s1:
-
-                if (RangeInCentimeters >= 5)
-                {
-                    my_state = fsm_state::s0;
-                }
-
-                break;
+            my_state = fsm_state::s0;
+        }
+        else if (RangeInCentimeters < 5)
+        {
+            my_state = fsm_state::s1;
+        }
+        else if RangeInCentimeters < 4)
+        {
+            my_state = fsm_state::s2;
+        }
+        else if (RangeInCentimeters < 3)
+        {
+            my_state = fsm_state::s3;
+        }
+        else if (RangeInCentimeters < 3)
+        {
+            my_state = fsm_state::s4;
         }
     }
     else
@@ -80,16 +80,40 @@ void loop()
     case fsm_state::s0:
 
         Motor.speed(MOTOR1, -50);
-        Motor.speed(MOTOR2, 70);
+        Motor.speed(MOTOR2, 50);
 
         break;
 
     case fsm_state::s1:
 
+        Motor.speed(MOTOR1, -40);
+        Motor.speed(MOTOR2, 40);
+
+        break;
+    }
+    case fsm_state::s2:
+
+        Motor.speed(MOTOR1, -30);
+        Motor.speed(MOTOR2, 30);
+
+        break;
+    case fsm_state::s3:
+
+        Motor.speed(MOTOR1, -20);
+        Motor.speed(MOTOR2, 20);
+
+        break;
+    case fsm_state::s4:
+
+        Motor.speed(MOTOR1, -10);
+        Motor.speed(MOTOR2, 10);
+
+        break;
+    case fsm_state::s5:
+
         Motor.stop(MOTOR1);
         Motor.stop(MOTOR2);
 
         break;
-    }
-
+}   
 }
