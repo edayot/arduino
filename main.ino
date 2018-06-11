@@ -21,6 +21,15 @@ fsm_state my_state = fsm_state::s0;
 
 Ultrasonic ultrasonic(2);
 
+void setup()
+{
+
+    // Make the function automate() being called
+    // every 1000 microseconds
+    set_timer4_interrupt(1000, automate);
+    Motor.begin(I2C_ADDRESS);
+}
+
 void automate()
 {
     static int ms = 0;
@@ -69,14 +78,7 @@ void automate()
     }
 }
 
-void setup()
-{
 
-    // Make the function automate() being called
-    // every 1000 microseconds
-    set_timer4_interrupt(1000, automate);
-    Motor.begin(I2C_ADDRESS);
-}
 
 void loop()
 {
